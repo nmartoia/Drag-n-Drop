@@ -1,0 +1,22 @@
+{
+  "name": "dragndrop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmartoia/Drag-n-Drop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nmartoia/Drag-n-Drop/issues"
+  },
+  "homepage": "https://github.com/nmartoia/Drag-n-Drop#readme",
+  "dependencies": {
+    "parcel": "^2.4.0"
+  }
+}
