@@ -1,21 +1,41 @@
 let div = document.querySelectorAll("div")
 let droite = document.querySelector(".droite")
 for(let i = 0 ; i<div.length;i++){
-div[i].addEventListener("mousedown",function(c){
-    let car = document.createElement("div")
-    droite.appendChild(car)
-        if(div[i].className=='red'){
-            car.className='red';
+    function dragstart_handler(ev) {
+        console.log("dragStart: dropEffect = " + ev.dataTransfer.dropEffect + " ; effectAllowed = " + ev.dataTransfer.effectAllowed);
+      
+        // Add this element's id to the drag payload so the drop handler will
+        // know which element to add to its tree
+        ev.dataTransfer.setData(div[i], ev.target.id);
+        ev.dataTransfer.effectAllowed = "copy";
+      }
+      
+      function drop_handler(ev) {
+        console.log("drop: dropEffect = " + ev.dataTransfer.dropEffect + " ; effectAllowed = " + ev.dataTransfer.effectAllowed);
+        ev.preventDefault();
+      
+        // Get the id of the target and add the copyd element to the target's DOM
+        
+        let data = document.createElement('div')
+        if(i==0){
+            data.className='red';
         }
-        else if(div[i].className==='blue'){
-            car.className='blue';
+        if(i==1){
+            data.className='blue';
         }
-        else if(div[i].className==='green'){
-            car.className='green';
-    }
-})
-window.addEventListener("mousemove",function(e){
-    x=e.clientX;
-    y=e.clientY
-})
+        if(i==2){
+            data.className='green';
+        }
+        ev.target.appendChild(data);
+      }
+      
+      function dragover_handler(ev) {
+        console.log("dragOver: dropEffect = " + ev.dataTransfer.dropEffect + " ; effectAllowed = " + ev.dataTransfer.effectAllowed);
+        ev.preventDefault();
+        // Set the dropEffect to copy
+        ev.dataTransfer.dropEffect = "copy"
+      }
 }
+
+
+  

@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script type="module" src="app.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -15,16 +14,17 @@
     <main>
         <ul class="flex">
             <li class="gauche">
-                <div class="red"></div>
-                <div class="blue"></div>
-                <div class="green"></div>
+                <div class="red" draggable="true" ondragstart="dragstart_handler(event);"></div>
+                <div class="blue" draggable="true" ondragstart="dragstart_handler(event);"></div>
+                <div class="green" draggable="true" ondragstart="dragstart_handler(event);"></div>
             </li>
-            <li class="droite" >
+            <li class="droite" dropzone="copy" aria-dropeffect="copy" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
             </li>
         </ul>
     </main>
     <footer>
         <h2>je sais pas on ma dis de metre un truc ici</h2>
     </footer>
+    <script src="app.js"></script>
 </body>
 </html>
