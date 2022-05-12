@@ -21,6 +21,7 @@ header{
 }
 .droite{
     width: 100vmax;
+    position: relative;
 }
 .gauche div{
     margin: 2.5rem;
@@ -31,12 +32,27 @@ div{
 }
 .red{
     background: red;
+    display: inline-block;
 }
 .blue{
     background: blue;
+    display: inline-block;
 }
 .green{
     background: green;
+    display: inline-block;
+} 
+.red1{
+    background: red;
+    position: absolute;
+}
+.blue1{
+    background: blue;
+    position: absolute;
+}
+.green1{
+    background: green;
+    position: absolute;
 }
 footer{
     border: 1px solid black;

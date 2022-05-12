@@ -1,9 +1,52 @@
 let div = document.querySelectorAll("div")
 let droite = document.querySelector(".droite")
+let temp;
+(function(c, u, r, p, o, s) {
+  u = c[u] = {};
+  u[r] = 0;
+  u[p] = 0;
+  u[o] = 0;
+  u[s] = 0;
+  document.addEventListener('drag', function(e) {
+    u[r] = e[r];
+    u[p] = e[p];
+    u[o] = e[r] + c.scrollX;
+    u[s] = e[p] + c.scrollY;
+  });
+  c.addEventListener('scroll', function() {
+    u[o] = u[r] + c.scrollX;
+    u[s] = u[p] + c.scrollY;
+  });
+})(window, 'curPos', 'clientX', 'clientY', 'viewportX', 'viewportY');
+
+for (let i = 0; i < div.length; i++) {
+  
+  div[i].addEventListener('mousedown',function (){
+    if(div[i]==div[0]){
+      temp='red1'
+    }
+    else if(div[i]==div[1]){
+      temp='blue1'
+    }
+    else if(div[i]==div[2]){
+      temp='green1'
+    }
+  })
+}
+document.addEventListener('drag', function(e) {
+
+  console.log({
+    "Coordonnée horizontale dans la fenêtre": curPos.clientX,
+    "Coordonnée verticale dans la fenêtre": curPos.clientY,
+    "Coordonnée horizontale dans le document": curPos.viewportX,
+    "Coordonnée verticale dans le document": curPos.viewportY
+  });
+
+});
 for(let i = 0 ; i<div.length;i++){
     function dragstart_handler(ev) {
         console.log("dragStart: dropEffect = " + ev.dataTransfer.dropEffect + " ; effectAllowed = " + ev.dataTransfer.effectAllowed);
-      
+        console.log(ev.path[0])
         // Add this element's id to the drag payload so the drop handler will
         // know which element to add to its tree
         ev.dataTransfer.setData(div[i], ev.target.id);
@@ -17,25 +60,17 @@ for(let i = 0 ; i<div.length;i++){
         // Get the id of the target and add the copyd element to the target's DOM
         
         let data = document.createElement('div')
-        if(i==0){
-            data.className='red';
-        }
-        if(i==1){
-            data.className='blue';
-        }
-        if(i==2){
-            data.className='green';
-        }
+        data.className=temp
+        data.style.top=curPos.clientY-50+'px'
+        data.style.left=curPos.clientX-225+'px'
         ev.target.appendChild(data);
       }
       
       function dragover_handler(ev) {
         console.log("dragOver: dropEffect = " + ev.dataTransfer.dropEffect + " ; effectAllowed = " + ev.dataTransfer.effectAllowed);
         ev.preventDefault();
-        // Set the dropEffect to copy
+        
         ev.dataTransfer.dropEffect = "copy"
       }
 }
 
-
-  
