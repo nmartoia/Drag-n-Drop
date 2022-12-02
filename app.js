@@ -35,17 +35,9 @@ for (let i = 0; i < div.length; i++) {
 }
 document.addEventListener('drag', function(e) {
 
-  console.log({
-    "Coordonnée horizontale dans la fenêtre": curPos.clientX,
-    "Coordonnée verticale dans la fenêtre": curPos.clientY,
-    "Coordonnée horizontale dans le document": curPos.viewportX,
-    "Coordonnée verticale dans le document": curPos.viewportY
-  });
-
 });
 for(let i = 0 ; i<div.length;i++){
     function dragstart_handler(ev) {
-        console.log("dragStart: dropEffect = " + ev.dataTransfer.dropEffect + " ; effectAllowed = " + ev.dataTransfer.effectAllowed);
         // Add this element's id to the drag payload so the drop handler will
         // know which element to add to its tree
         ev.dataTransfer.setData(div[i], ev.target.id);
@@ -53,7 +45,6 @@ for(let i = 0 ; i<div.length;i++){
       }
       
       function drop_handler(ev) {
-        console.log("drop: dropEffect = " + ev.dataTransfer.dropEffect + " ; effectAllowed = " + ev.dataTransfer.effectAllowed);
         ev.preventDefault();
       
         // Get the id of the target and add the copyd element to the target's DOM
@@ -66,7 +57,6 @@ for(let i = 0 ; i<div.length;i++){
       }
       
       function dragover_handler(ev) {
-        console.log("dragOver: dropEffect = " + ev.dataTransfer.dropEffect + " ; effectAllowed = " + ev.dataTransfer.effectAllowed);
         ev.preventDefault();
         
         ev.dataTransfer.dropEffect = "copy"
