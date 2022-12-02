@@ -46,7 +46,6 @@ document.addEventListener('drag', function(e) {
 for(let i = 0 ; i<div.length;i++){
     function dragstart_handler(ev) {
         console.log("dragStart: dropEffect = " + ev.dataTransfer.dropEffect + " ; effectAllowed = " + ev.dataTransfer.effectAllowed);
-        console.log(ev.path[0])
         // Add this element's id to the drag payload so the drop handler will
         // know which element to add to its tree
         ev.dataTransfer.setData(div[i], ev.target.id);
